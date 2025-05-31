@@ -9,6 +9,7 @@ services:
     environment:
       DOCKER_COMPOSE: "true"
     command: ["npm", "install"]
+    dns: 8.8.8.8
 
   dashboard-be-init-manager:
     image: golang:${GOLANG_IMAGE_TAG:-latest}
@@ -30,6 +31,7 @@ services:
     working_dir: /opt/Taipei-City-Dashboard-BE
     command: ["go", "run", "main.go", "migrateDB"]
     # command: ["sleep","600000"]
+    dns: 8.8.8.8
 
   dashboard-be-init-dashboard:
     image: golang:${GOLANG_IMAGE_TAG:-latest}
@@ -48,6 +50,7 @@ services:
     working_dir: /opt/Taipei-City-Dashboard-BE
     command: ["go", "run", "main.go", "initDashboard"]
     # command: ["sleep","600000"]
+    dns: 8.8.8.8
 
 networks:
   default:
